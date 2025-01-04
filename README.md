@@ -6,14 +6,19 @@
 4. [Installation and Usage](#installation-and-usage)
 5. [Visualization](#visualization)
 6. [Mapping](#mapping)
-7. [Contact](#contact)
-
-# ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System
+7. [Acknowledgment]((#acknowledgment))
+8. [Contact](#contact)
+   
+# ROS Based Autonomus Mobile Robot with 3D Mapping System
+# TÜBİTAK 2209-B Industry Oriented Undergraduate Research Projects Support Program
 ## Introduction
 This repository contains the implementation details, source code, and documentation for an autonomous differential drive mobile robot platform developed using ROS. The project includes a 3D mapping system utilizing a 3D LiDAR sensor mounted on a servo motor for high-resolution point cloud generation. For more details about the mapping system you can visit my [3D LiDAR Rotation System](https://github.com/omerdurmus61/3D-LiDAR-Rotation-System-Design?tab=readme-ov-file#system-architecture) project repository.
 
 | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/physical_robot1.jpeg) | ![LiDAR in Action](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/physical_robot2.jpeg) |
 |------------------------------------|------------------------------------|
+
+| ![LiDAR System 1](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/robot_visualization2.gif) |
+|--------------------------|
 
 
 | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/motion_test1.gif) | ![LiDAR in Action](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/motion_test2.gif) |
@@ -55,8 +60,12 @@ This TF (Transform Frame) tree visualizes the hierarchical relationships and tra
 |--------------------------|
 |  Generated Point Cloud Map               |
 
-| [Video](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/full_mapping.mp4) |
-|--------------------------|
-|  Generated Point Cloud Map               |
+| ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/pcd%20map1.png) | ![LiDAR in Action](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/pcd%20map2.png) |
+|------------------------------------|------------------------------------|
+
+## Acknowledgment
+This project was supported by the **TÜBİTAK 2209-B Industry-Oriented Undergraduate Research Projects Support Program**.
 
 ## Contact
+For any questions or feedback, please contact:
+- Email: [omercandurmuss@gmail.com]

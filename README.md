@@ -22,11 +22,22 @@ This repository contains the implementation details, source code, and documentat
 ## Mechanical Design and Manufacturing
 The electromechanical system was designed using Autodesk Fusion 360 and features a robust frame constructed from aluminum profiles. The design incorporates several components manufactured with a 3D printer, ensuring the system’s mechanical integrity and adaptability.
 
-| ![LiDAR System]([image1_path](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/CAD1.png)) | ![LiDAR System]([image2_path](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/CAD2.png)) | ![LiDAR System]([image3_path](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/CAD3.png)) |
+| ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/CAD1.png) | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/CAD2.png) | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/CAD3.png) |
 |--------------------------|--------------------------|--------------------------|
 
 
 ## System Architecture
+This system illustrates the operation of a 3D LiDAR-enabled autonomous mobile robot controlled by a PC running ROS Melodic on Ubuntu 18.04. The PC handles tasks such as scanning, mapping, and navigation by processing LiDAR data and converting point clouds into usable information for a mapping algorithm that builds an environment map. A servo motor rotates the LiDAR sensor to expand its scanning coverage, sending position data back to the PC. The microcontroller manages motor control and speed regulation by processing encoder data, using a PID algorithm to adjust wheel speeds, and generating PWM signals to drive the motors. Additionally, the IMU provides acceleration and angular velocity data, which are combined with kinematic calculations and a Kalman filter to generate the robot's odometry information.
+
+| ![LiDAR System 1](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/flowchart.png) |
+|--------------------------|
+|  Flowchart               |
+
+This RQT_GRAPH illustrates the ROS-based structure of a robotic system, showing the interaction between nodes, topics, and transform frames (TF). The /robot_marker and /platform_marker topics are used for visualizing the robot and platform state, while /LIDAR_marker and /LIDAR_MRS_marker represent the LiDAR sensor's position and status. The /robot_joy and /joy topics handle joystick inputs for manual control, which are translated into velocity commands via /teleop and published on /cmd_vel. The /mcu_imu_gps_servo node manages the servo motor, publishing its position through /servo_pos and /servo_pos_header, enabling LiDAR rotation. LiDAR data is initially published on /cloud and processed by the /PointCloud_transformer node to generate transformed point clouds on /transformed_cloud. The /tf topic integrates transform frames such as /base_link_to_laser and /map_to_odom for localization and mapping, while /odom_data_quat and /imu/data are fused via an EKF to provide accurate odometry on /robot_pose_ekf. The system ensures seamless communication between motion, sensor processing, and visualization components for autonomous navigation.
+
+| ![LiDAR System 1](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/rqt_graphs/nav_robot_lidar_rotation.png) |
+|--------------------------|
+|  RQT_GRAPH               |
 
 ## Installation and Usage
 

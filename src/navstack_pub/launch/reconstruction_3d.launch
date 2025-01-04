@@ -1,0 +1,77 @@
+<launch>
+
+  <!-- Transformation Configuration ... Setting Up the Relationships Between Coordinate Frames --> 
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.23 0 0.0 3.14 0 0 base_link laser 30" />
+  <node pkg="tf" type="static_transform_publisher" name="imu_broadcaster" args="-0.13 0.07 0.0 0 0 0 base_link imu 30" />
+  <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0.09 0 0 0 base_footprint base_link 30" />
+  <!-- odom to base_footprint transform will be provided by the robot_pose_ekf node -->
+  <!-- map to odom will be provided by the AMCL -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 30" />
+
+  <!-- Wheel Encoder Tick Publisher and Base Controller Using Arduino -->  
+  <!-- motor_controller_diff_drive_2.ino is the Arduino sketch -->
+  <!-- Subscribe: /cmd_vel -->
+  <!-- Publish: /right_ticks, /left_ticks -->
+  <node pkg="rosserial_python" type="serial_node.py" name="controller_and_encoder_publisher">
+    <param name="port" value="/dev/ttyUSB0"/>
+    <param name="baud" value="115200"/>
+  </node>
+
+  <!-- Wheel Odometry Publisher -->
+  <!-- Subscribe: /right_ticks, /left_ticks, /initial_2d -->
+  <!-- Publish: /odom_data_euler, /odom_data_quat -->
+  <node pkg="localization_data_pub" type="ekf_odom_pub" name="ekf_odom_pub">
+  </node> 
+	
+  <!-- IMU Data Publisher Using the BNO055 IMU Sensor -->
+  <!-- Publish: /imu/data -->
+    <arg name="serial_port" default="/dev/ttyUSB1" />
+    <arg name="frame_id" default="imu" />
+    <arg name="operation_mode" default="IMU"/>
+    <arg name="oscillator" default="INTERNAL" />
+    <arg name="reset_orientation" default="true" />
+    <arg name="frequency" default="50" /> 
+    <arg name="use_magnetometer" default="false" />
+    <arg name="use_temperature" default="false" /> 
+
+
+    <node pkg="ros_imu_bno055" type="imu_ros.py" name="ros_imu_bno055_node" output="screen">
+        <param name="serial_port" value="$(arg serial_port)" />
+        <param name="frame_id" value="$(arg frame_id)" />
+        <param name="operation_mode" value="$(arg operation_mode)" />
+        <param name="oscillator" value="$(arg oscillator)" />
+        <param name="reset_orientation" value = "$(arg reset_orientation)" />
+        <param name="frequency" value="$(arg frequency)" />
+        <param name="use_magnetometer" value="$(arg use_magnetometer)" />    
+        <param name="use_temperature" value="$(arg use_temperature)" />    
+    </node>
+	
+  <!-- Extended Kalman Filter from robot_pose_ekf Node-->
+  <!-- Subscribe: /odom, /imu_data, /vo -->
+  <!-- Publish: /robot_pose_ekf/odom_combined -->
+  <remap from="odom" to="odom_data_quat" />
+  <remap from="imu_data" to="imu/data" />
+  <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+    <param name="output_frame" value="odom"/>
+    <param name="base_footprint_frame" value="base_footprint"/>
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+    <param name="gps_used" value="false"/>
+    <param name="debug" value="false"/>
+    <param name="self_diagnose" value="false"/>
+  </node>
+
+<!-- Initial Pose and Goal Publisher -->
+  <!-- Publish: /initialpose, /move_base_simple/goal -->
+
+
+  <!-- Subscribe: /initialpose, /move_base_simple/goal -->
+  <!-- Publish: /initial_2d, /goal_2d --> 
+  <node pkg="localization_data_pub" type="rviz_click_to_2d" name="rviz_click_to_2d">
+  </node>   
+
+
+</launch>

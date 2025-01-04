@@ -1,0 +1,13 @@
+digraph G {
+"base_footprint" -> "base_link"[label="Broadcaster: /base_link_broadcaster\nAverage rate: 33.338 Hz\nMost recent transform: 1706704616.115 ( 0.001 sec old)\nBuffer length: 4.889 sec\n"];
+"odom" -> "base_footprint"[label="Broadcaster: /robot_pose_ekf\nAverage rate: 23.586 Hz\nMost recent transform: 1706704616.033 ( 0.084 sec old)\nBuffer length: 4.833 sec\n"];
+"map" -> "odom"[label="Broadcaster: /map_to_odom\nAverage rate: 33.341 Hz\nMost recent transform: 1706704616.145 ( -0.028 sec old)\nBuffer length: 4.919 sec\n"];
+"base_link" -> "laser"[label="Broadcaster: /base_link_to_laser\nAverage rate: 33.340 Hz\nMost recent transform: 1706704616.145 ( -0.028 sec old)\nBuffer length: 4.919 sec\n"];
+"base_link" -> "LIDAR_MRS"[label="Broadcaster: /nav_robot_LIDAR_tf_broadcaster\nAverage rate: 46.928 Hz\nMost recent transform: 1706704616.101 ( 0.016 sec old)\nBuffer length: 4.901 sec\n"];
+"base_link" -> "LIDAR_base"[label="Broadcaster: /nav_robot_LIDAR_tf_broadcaster\nAverage rate: 46.928 Hz\nMost recent transform: 1706704616.101 ( 0.016 sec old)\nBuffer length: 4.901 sec\n"];
+"base_link" -> "imu"[label="Broadcaster: /imu_broadcaster\nAverage rate: 33.335 Hz\nMost recent transform: 1706704616.124 ( -0.007 sec old)\nBuffer length: 4.890 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1706704616.117"[ shape=plaintext ] ;
+ }->"map";
+}

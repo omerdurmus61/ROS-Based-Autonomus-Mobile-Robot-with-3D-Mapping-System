@@ -51,7 +51,12 @@ This TF (Transform Frame) tree visualizes the hierarchical relationships and tra
 | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/robot_visualization2.gif) | ![LiDAR in Action](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/robot_visualization3.gif) |
 
 ## Mapping
-| ![LiDAR System 1](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/full_mapping.mp4) |
+| ![LiDAR System 1](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/cloud_compare_animation.gif) |
 |--------------------------|
-|  RQT_GRAPH               |
+|  Generated Point Cloud Map               |
+
+| [Video](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/full_mapping.mp4) |
+|--------------------------|
+|  Generated Point Cloud Map               |
+
 ## Contact

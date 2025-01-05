@@ -7,7 +7,8 @@
 5. [Visualization](#visualization)
 6. [Mapping](#mapping)
 7. [Acknowledgment]((#acknowledgment))
-8. [Contact](#contact)
+8. [References](#references)
+9. [Contact](#contact)
    
 # ROS Based Autonomus Mobile Robot with 3D Mapping System
 # TÜBİTAK 2209-B Industry Oriented Undergraduate Research Projects Support Program
@@ -94,6 +95,18 @@ roslaunch lidar_rotation nav_robot_visualization.launch
 ## Acknowledgment
 This project was supported by the **TÜBİTAK 2209-B Industry-Oriented Undergraduate Research Projects Support Program**.
 
+## References
+1. ROS Official Documentation: [http://wiki.ros.org](http://wiki.ros.org)  
+  
+2. TÜBİTAK 2209-B Industry-Oriented Undergraduate Research Projects Support Program  
+
+3. Automatic Addison How to Set Up the ROS Navigation Stack on a Robot: [https://automaticaddison.com/how-to-set-up-the-ros-navigation-stack-on-a-robot/](https://automaticaddison.com/how-to-set-up-the-ros-navigation-stack-on-a-robot/)  
+ 
+4. EKF Localization Reference: [https://wiki.ros.org/robot_pose_ekf](https://wiki.ros.org/robot_pose_ekf)  
+
+5. MRS 1000 3D LiDAR Sensor Documentation: [Documantation](https://www.sick.com/tr/tr/catalog/ueruenler/lidar-ve-radar-sensoerleri/lidar-sensoerleri/mrs1000/mrs1104c-111011/p/p495044)  
+ 
+      
 ## Contact
 For any questions or feedback, please contact:
 - Email: [omercandurmuss@gmail.com]

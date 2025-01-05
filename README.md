@@ -48,7 +48,35 @@ This TF (Transform Frame) tree visualizes the hierarchical relationships and tra
 | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/tf%20tree.png) | ![LiDAR in Action](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/frames3.png) |
 |------------------------------------|------------------------------------|
 |  TF Tree                           | Frames on Rviz                     |
+
 ## Installation and Usage
+```bash
+# Create a ROS workspace
+mkdir ~/catkin_ws
+cd ~/catkin_ws
+
+# Clone the repository
+git clone https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System.git
+
+# Navigate to the workspace and build the project
+catkin_make
+
+# Source the workspace
+source devel/setup.bash
+```
+This project includes a ROS bag file that contains the recorded odometry and LiDAR data from the robot. This bag file can be used to analyze and visualize the robot's movements and sensor readings, allowing users to test algorithms for mapping, localization, and navigation without requiring a physical robot. By replaying the bag file in a ROS environment, users can simulate the robot's behavior and evaluate the integration of odometry and LiDAR data for various applications.
+
+rosbag file
+[office1_transformed.bag]() 
+
+Use rosbag terminal tool to replaying the bag file
+```bash
+rosbag play office1_transformed.bag 
+```
+Using nav_robot_visualization launch file you can visualize robot's movements and sensor readings
+```bash
+roslaunch lidar_rotation nav_robot_visualization.launch 
+```
 
 ## Visualization
 | ![LiDAR System](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/odometry.gif) | ![LiDAR in Action](https://github.com/omerdurmus61/ROS-Based-Autonomus-Mobile-Robot-with-3D-Mapping-System/blob/master/images/robot_visualization.gif) |

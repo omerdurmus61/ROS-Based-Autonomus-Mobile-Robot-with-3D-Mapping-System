@@ -6,7 +6,7 @@
 4. [Installation and Usage](#installation-and-usage)
 5. [Visualization](#visualization)
 6. [Mapping](#mapping)
-7. [Acknowledgment]((#acknowledgment))
+7. [Acknowledgment](#acknowledgment)
 8. [References](#references)
 9. [Contact](#contact)
    
